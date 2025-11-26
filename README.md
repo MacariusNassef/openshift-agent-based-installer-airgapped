@@ -178,18 +178,25 @@ Check IP forwarding: `cat /proc/sys/net/ipv4/ip_forward`
 
 ### Change the hostname of two bastions
 Machine 1 (bastion-mirror.co.local)
-```sudo hostnamectl set-hostname bastion-mirror.co.local
+
+```bash
+sudo hostnamectl set-hostname bastion-mirror.co.local
 sudo sed -i 's/^127.0.0.1.*/127.0.0.1   bastion-mirror.co.local localhost/' /etc/hosts
-sudo systemctl restart systemd-hostnamed```
+sudo systemctl restart systemd-hostnamed
+```
 
 ✅ Machine 2 (bastion-mirror.disco.local)
-```sudo hostnamectl set-hostname bastion-mirror.disco.local
+```bash
+sudo hostnamectl set-hostname bastion-mirror.disco.local
 sudo sed -i 's/^127.0.0.1.*/127.0.0.1   bastion-mirror.disco.local localhost/' /etc/hosts
-sudo systemctl restart systemd-hostnamed```
+sudo systemctl restart systemd-hostnamed
+```
 
 ✅ Verify
-```hostnamectl
-hostname -f```
+```bash
+hostnamectl
+hostname -f
+```
 
 
 ### SSH
