@@ -252,6 +252,7 @@ This is how it should like if you've downloaded all:
 ```
 
 Unpack the `.gz` files, except execution-environment.tar, image-archive.tar and sqlite3.tar of the folder mirror-registry and move them into `/usr/local/bin`:
+or you can use >> sudo install -m 755 oc-mirror /usr/local/bin/ 
 
 ```code
 tree /usr/local/bin
