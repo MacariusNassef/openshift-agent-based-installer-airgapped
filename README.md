@@ -176,15 +176,30 @@ sudo firewall-cmd --reload
 
 Check IP forwarding: `cat /proc/sys/net/ipv4/ip_forward`
 
+### Change the hostname of two bastions
+Machine 1 (bastion-mirror.co.local)
+```sudo hostnamectl set-hostname bastion-mirror.co.local
+sudo sed -i 's/^127.0.0.1.*/127.0.0.1   bastion-mirror.co.local localhost/' /etc/hosts
+sudo systemctl restart systemd-hostnamed```
+
+✅ Machine 2 (bastion-mirror.disco.local)
+```sudo hostnamectl set-hostname bastion-mirror.disco.local
+sudo sed -i 's/^127.0.0.1.*/127.0.0.1   bastion-mirror.disco.local localhost/' /etc/hosts
+sudo systemctl restart systemd-hostnamed```
+
+✅ Verify
+```hostnamectl
+hostname -f```
+
+
 ### SSH
 
 Configure `ssh`:
-
-`cat ~/.ssh/id_ed25519.pub | ssh rguske@bastion-rguske.rguske.coe.muc.redhat.com "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && chmod 700 ~/.ssh"`
-
 - Generating an SSH key pair on your Bastion-Host. You can use this key pair to authenticate into the OpenShift Container Platform cluster’s nodes after it is deployed.
 
 `ssh-keygen -t ed25519 -N '' -f ~/.ssh/id_ed25519`
+
+`cat ~/.ssh/id_ed25519.pub | ssh rguske@bastion-rguske.rguske.coe.muc.redhat.com "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys && chmod 700 ~/.ssh"`
 
 ### RHEL Subscription Manager
 
