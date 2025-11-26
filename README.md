@@ -555,6 +555,18 @@ Example: `4.17.16`
 6. Export the release mirror: `export RELEASE_NAME='ocp-release'`
 7. Export the type of architecture for your cluster: `export ARCHITECTURE='x86_64'`
 
+macz setup 
+```
+export OCP_RELEASE='4.20.0'
+export LOCAL_REGISTRY='bastion-mirror.co.local:8443'
+export LOCAL_REPOSITORY='ocp4/openshift4'
+export PRODUCT_REPO='openshift-release-dev'
+export LOCAL_SECRET_JSON='/home/macz/mirror-registry/mirroring/pull_secret.json'
+export RELEASE_NAME='ocp-release'
+export ARCHITECTURE='x86_64'
+```
+
+
 ### Option 1 - Mirror the images to the local mirror registry
 
 ![mirroring-images](assets/openshift-mirror-registry-diagramm-2.png)
